@@ -18,18 +18,12 @@ use Anax\Commons\ContainerInjectableTrait;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class ValidateIpController implements ContainerInjectableInterface
+class ValidateIpJsonController extends ValidateIpController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-
-
-    /**
-     * @var string $db a sample member variable that gets initialised
-     */
     private $ipAddress;
     private $object;
-
 
     /**
      * Display the view
@@ -38,23 +32,19 @@ class ValidateIpController implements ContainerInjectableInterface
      */
     public function indexAction() : object
     {
-        $title = "Check IP";
+        $title = "Check IP (JSON)";
 
         $page = $this->di->get("page");
         $request = $this->di->get("request");
+        $json = null;
+
         $this->ipAddress = $request->getGet("ip");
-
-        $protocol = null;
-        $host = null;
-
         $this->object = new ValidateIp();
-        $protocol = $this->getProtocolResult($this->ipAddress, $this->object);
-        $host = $this->object->getHost($this->ipAddress);
+        $json = $this->showIpJson($this->ipAddress, $this->object);
 
-        $data["protocol"] = $protocol;
-        $data["host"] = $host;
+        $data['json'] = $json;
 
-        $page->add("anax/v2/validate/index", $data);
+        $page->add("anax/v2/validate/json", $data);
 
         return $page->render([
             "title" => $title,
@@ -63,17 +53,20 @@ class ValidateIpController implements ContainerInjectableInterface
 
 
     /**
-     * Check if IP is valid or not.
+     * Check if IP is valid or not and return host.
      * GET ip
      *
-     * @return string
+     * @return array
      */
-    public function getProtocolResult($ipAddress, $object) : string
+    public function showIpJson($ipAddress, $object) : array
     {
-        if ($object->getProtocol($ipAddress)) {
-            return "The IP $ipAddress is a valid " . $object->getProtocol($ipAddress) ." address." ;
-        }
 
-        return "The IP $ipAddress is not valid.";
+        $json = [
+            "ip" => $ipAddress,
+            "protocol" => $object->getProtocol($ipAddress),
+            "host" => $object->getHost($ipAddress),
+        ];
+
+        return [$json];
     }
 }

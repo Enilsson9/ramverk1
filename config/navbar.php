@@ -17,20 +17,5 @@ return [
         "text" => "Redovisning",
         "url" => "redovisning",
         "title" => "Redovisningstexter från kursmomenten.",
-    ],
-    [
-        "text" => "Validera-IP",
-        "url" => "validera",
-        "title" => "Om denna webbplats.",
-    ],
-    [
-        "text" => "StyleChooser",
-        "url" => "style",
-        "title" => "Om denna webbplats.",
-    ],
-    [
-        "text" => "Verktyg",
-        "url" => "verktyg",
-        "title" => "Om denna webbplats.",
-    ],
+    ]
 ];

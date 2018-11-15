@@ -10,5 +10,10 @@
              "mount" => "validera",
              "handler" => "\Edward\Validate\ValidateIpController",
          ],
+         [
+             "info" => "Validera IP adresser (JSON)",
+             "mount" => "json",
+             "handler" => "\Edward\Validate\ValidateIpJsonController",
+         ],
      ]
  ];

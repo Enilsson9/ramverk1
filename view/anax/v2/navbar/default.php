@@ -11,7 +11,7 @@ namespace Anax\View;
 
 
 ?><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-       <a class="navbar-brand" href="#">Me-sida</a>
+       <a class="navbar-brand" href="index">Me-sida</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
@@ -22,6 +22,18 @@ namespace Anax\View;
                     <a class="nav-link" href="<?= url($item["url"]) ?>" title="<?= $item["title"] ?>"><?= $item["text"] ?></a>
                 </li>
             <?php endforeach; ?>
+
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Validate
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <a class="dropdown-item" href="validera">Validate IP</a>
+                 <a class="dropdown-item" href="json">Validate IP (JSON)</a>
+                 <!--<div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#">Something else here</a>-->
+               </div>
+             </li>
          </ul>
        </div>
      </nav>

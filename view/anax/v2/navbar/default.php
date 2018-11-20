@@ -25,11 +25,11 @@ namespace Anax\View;
 
             <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Validate
+                 IP tools
                </a>
                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="validera">Validate IP</a>
-                 <a class="dropdown-item" href="json">Validate IP (JSON)</a>
+                 <a class="dropdown-item" href="validate">Get details from IP</a>
+                 <a class="dropdown-item" href="json">Get details from IP (JSON)</a>
                  <!--<div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>-->
                </div>

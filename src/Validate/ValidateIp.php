@@ -22,8 +22,6 @@ class ValidateIp implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-
-
     /**
      * Check if IP is valid or not.
      * GET ip
@@ -58,5 +56,39 @@ class ValidateIp implements ContainerInjectableInterface
         }
 
         return "None";
+    }
+
+    /**
+     * Return client's IP
+     * GET ip
+     *
+     * @return string
+     */
+    public function getCurrentIp()
+    {
+        return $_SERVER["REMOTE_ADDR"] ?? '127.0.0.1';
+    }
+
+    /**
+     * Check if IP is valid or not.
+     * GET  host
+     *
+     * @return string
+     */
+    public function getIpDetails($ipAddress)
+    {
+        // set IP address and API access key
+        $access_key = '49a95e2b98f16776978bbf2d3097c542';
+
+        // Initialize CURL:
+        $ch = curl_init('http://api.ipstack.com/'.$ipAddress.'?access_key='.$access_key.'');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Store the data:
+        $json = curl_exec($ch);
+        curl_close($ch);
+
+        // Decode JSON response:
+        return json_decode($json, true);
     }
 }

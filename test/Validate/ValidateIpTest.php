@@ -82,4 +82,26 @@ class ValidateIpTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Just assert something is true.
+     */
+    public function testGetCurrentIp()
+    {
+        $object = new ValidateIp();
+        $res = $object->getCurrentIp();
+        $this->assertInternalType("string", $res);
+    }
+
+
+    /**
+     * Just assert something is true.
+     */
+    public function testGetIpDetails()
+    {
+        $object = new ValidateIp();
+        $ipAddress = "186.151.62.176";
+        $res = $object->getIpDetails($ipAddress);
+        $this->assertInternalType("array", $res);
+    }
 }

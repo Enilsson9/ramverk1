@@ -36,37 +36,25 @@ class ValidateIpJsonController extends ValidateIpController implements Container
 
         $page = $this->di->get("page");
         $request = $this->di->get("request");
+
         $json = null;
+        $ip = $this->ipAddress;
 
         $this->ipAddress = $request->getGet("ip");
         $this->object = new ValidateIp();
-        $json = $this->showIpJson($this->ipAddress, $this->object);
+        $json = $this->object->getIpDetails($this->ipAddress);
+
+        if ($this->ipAddress === null) {
+            $ip = $this->object->getCurrentIp();
+        }
 
         $data['json'] = $json;
+        $data['ip'] = $ip;
 
         $page->add("anax/v2/validate/json", $data);
 
         return $page->render([
             "title" => $title,
         ]);
-    }
-
-
-    /**
-     * Check if IP is valid or not and return host.
-     * GET ip
-     *
-     * @return array
-     */
-    public function showIpJson($ipAddress, $object) : array
-    {
-
-        $json = [
-            "ip" => $ipAddress,
-            "protocol" => $object->getProtocol($ipAddress),
-            "host" => $object->getHost($ipAddress),
-        ];
-
-        return [$json];
     }
 }

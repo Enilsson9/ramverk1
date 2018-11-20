@@ -44,15 +44,25 @@ class ValidateIpController implements ContainerInjectableInterface
         $request = $this->di->get("request");
         $this->ipAddress = $request->getGet("ip");
 
+        $ip = $this->ipAddress;
         $protocol = null;
         $host = null;
+        $details = null;
 
         $this->object = new ValidateIp();
+
+        if ($this->ipAddress === null) {
+            $ip = $this->object->getCurrentIp();
+        }
+
         $protocol = $this->getProtocolResult($this->ipAddress, $this->object);
         $host = $this->object->getHost($this->ipAddress);
+        $details = $this->object->getIpDetails($this->ipAddress);
 
+        $data["details"] = $details;
         $data["protocol"] = $protocol;
         $data["host"] = $host;
+        $data["ip"] = $ip;
 
         $page->add("anax/v2/validate/index", $data);
 

@@ -37,8 +37,6 @@ class ValidateIpJsonControllerTest extends TestCase
         //$this->controller->initialize();
     }
 
-
-
     /**
      * Test the route "index".
      */
@@ -46,26 +44,5 @@ class ValidateIpJsonControllerTest extends TestCase
     {
         $res = $this->controller->indexAction();
         $this->assertInternalType("object", $res);
-    }
-
-
-    /**
-     * Test the route "dump-di".
-     */
-    public function testShowIpJson()
-    {
-        $object = new ValidateIp();
-        $res = $this->controller->showIpJson("186.151.62.176", $object);
-        $this->assertInternalType("array", $res);
-    }
-
-    /**
-     * Test the route "dump-di".
-     */
-    public function testShowIpJsonFalse()
-    {
-        $object = new ValidateIp();
-        $res = $this->controller->showIpJson("123456789", $object);
-        $this->assertInternalType("array", $res);
     }
 }

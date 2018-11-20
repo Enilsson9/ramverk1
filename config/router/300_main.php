@@ -7,7 +7,7 @@
      "routes" => [
          [
              "info" => "Validera IP adresser",
-             "mount" => "validera",
+             "mount" => "validate",
              "handler" => "\Edward\Validate\ValidateIpController",
          ],
          [

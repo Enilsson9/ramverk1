@@ -43,7 +43,17 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body text-left">
-      My report here
+        Vi har under programmet använt lite MVC-inspirerade ramverk. T.ex Flask i oopython, Mithril i webapp, Express.js i databas och Anax i oophp. Kanske var det inte mer View/Controller än MVC, eftersom vi inte har använt Modeller på ett SOLID sätt. Eller det var inget krav då i alla fall. Jag tycker att vi som läser programmet förstår tanken bakom ett MVC-ramverk väldigt bra.
+        <br><br>
+        Begreppet SOLID är lite abstrakt, däremot jag förstår delvis tanken bakom det. Min uppfattning är att när man skriver objektorienterad kod, ska man då fokusera mest på underhållsläget (och det som går att enhetstesta). Att skriva läsbara klasser som samarbetar med varandra och går att ändra/lägga till/ta bort funktioner utan att förstöra hela kärnan.
+        <br><br>
+        Jag läste Wikipedias artiklarna och kollade lite snabbt på videon. Definitionerna på Wikipedia är okej, men det fattas lite mera real-life exempel. Videon däremot var tydlig. Killen i videon nämnde att alla utvecklare läser mer kod än vad vi skriver kod. Det där, i mitt tycke, är den viktigaste anledningen för att skriva på ett SOLID sätt.
+        <br><br>
+        Om jag minns rätt, vi läste lite om designmönster i javascript kursen. Det var mest om "Module Pattern". Jag har inte hört talats om andra designmönster, men förstår varför de är viktiga. En designmönster är som en mall om hur vi kan lösa ett problem. Fördelen är att koden kan bli mer DRY och återanvändbar.
+        <br><br>
+        Jag valde att kika på Laravel, eftersom det är ramverket #1 i PHP enligt flera källor. Dokumentationen var tydlig. De har delat upp dokumentationen i några kategorier såsom Views, Controllers, Middlewares (MVC) osv. Ramverket är alltså mer än ett MVC ramverk. Jag var förvånad över hur mycket det liknar Anax, kanske var Laravel inspirationen till Anax? Eftersom de också har "Pretty URLs" och andra funktioner som fungerar nästan likadant.
+        <br><br>
+        Min TIL är att MVC är än av de bästa sätten att strukturera kod. Därför har många kända ramverk blivit inspirerad av den. Det jag har märkt nu efter att ha lekat runt med 5-6 ramverk under kursens gång, är de liknar varandra ganska mycket. Samma sak gäller för programmeringspråk. Det viktigaste är att förstå programmeringstänkande och ramverkstänkande.
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Edward\Validate;
+namespace Edward\Weather;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
@@ -18,12 +18,19 @@ use Anax\Commons\ContainerInjectableTrait;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class ValidateIpJsonController extends ValidateIpController implements ContainerInjectableInterface
+class WeatherIpController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+
+
+    /**
+     * @var string $db a sample member variable that gets initialised
+     */
     private $ipAddress;
     private $object;
+    private $requester;
+
 
     /**
      * Display the view
@@ -32,26 +39,29 @@ class ValidateIpJsonController extends ValidateIpController implements Container
      */
     public function indexAction() : object
     {
-        $title = "Check IP (JSON)";
+        $title = "Check IP";
 
         $page = $this->di->get("page");
         $request = $this->di->get("request");
-
-        $json = null;
-        $currentIp = $this->ipAddress;
+        $this->requester = $this->di->get("requester");
 
         $this->ipAddress = $request->getGet("ip");
-        $this->object = new ValidateIp();
-        $json = $this->object->getIpDetails($this->ipAddress);
+        $currentIp = $this->ipAddress;
+        $this->object = new WeatherIp();
 
-        if ($this->ipAddress === null) {
-            $currentIp = $this->object->getCurrentIp();
-        }
+        $currentIp = $this->object->validateIp($this->ipAddress);
 
-        $data['json'] = $json;
-        $data['currentIp'] = $currentIp;
+        $accessKey  = '49a95e2b98f16776978bbf2d3097c542';
+        $details = $this->requester->curlJson('http://api.ipstack.com/'.$currentIp.'?access_key='.$accessKey);
 
-        $page->add("anax/v2/validate/json", $data);
+        $accessKey  = '6ff1debe5cff84d291f5345bd079fd90';
+        $weather = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude']);
+
+        $data["details"] = $details;
+        $data["weather"] = $weather;
+        $data["currentIp"] = $currentIp;
+
+        $page->add("anax/v2/weather/index", $data);
 
         return $page->render([
             "title" => $title,

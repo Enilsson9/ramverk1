@@ -78,15 +78,15 @@ class ValidateIp implements ContainerInjectableInterface
     public function getIpDetails($ipAddress)
     {
         // set IP address and API access key
-        $access_key = '49a95e2b98f16776978bbf2d3097c542';
+        $accessKey = '49a95e2b98f16776978bbf2d3097c542';
 
         // Initialize CURL:
-        $ch = curl_init('http://api.ipstack.com/'.$ipAddress.'?access_key='.$access_key.'');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $initialize = curl_init('http://api.ipstack.com/'.$ipAddress.'?access_key='.$accessKey.'');
+        curl_setopt($initialize, CURLOPT_RETURNTRANSFER, true);
 
         // Store the data:
-        $json = curl_exec($ch);
-        curl_close($ch);
+        $json = curl_exec($initialize);
+        curl_close($initialize);
 
         // Decode JSON response:
         return json_decode($json, true);

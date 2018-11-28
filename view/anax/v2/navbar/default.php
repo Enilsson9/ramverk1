@@ -34,6 +34,18 @@ namespace Anax\View;
                  <a class="dropdown-item" href="#">Something else here</a>-->
                </div>
              </li>
+
+             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Weather tools
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                  <a class="dropdown-item" href="weather">Get weather from IP</a>
+                  <a class="dropdown-item" href="api">Get weather from IP (JSON)</a>
+                  <!--<div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>-->
+                </div>
+              </li>
          </ul>
        </div>
      </nav>

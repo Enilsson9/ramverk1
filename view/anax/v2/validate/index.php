@@ -88,7 +88,7 @@
             </div>
 
             <div class="form-group">
-                    <input class="form-control"  type="text" name="ip" value="<?= $ip ?>" required>
+                    <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" required>
             </div>
             <button class="btn btn-primary btn-lg btn-block"  type="submit">Validate</button>
         </form>

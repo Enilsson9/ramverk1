@@ -67,7 +67,19 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        My report here
+        Det känns lite udda att jobba med $di. Det blir mycket man måste konfigurera för att lägga till nya klasser i Containern. Det gick inte heller för mig att nå $di utanför mina Controller klasser. Däremot, om man lägger till flera klasser kan koden bli mycket smidigare och lättare att nå utan koll på alla namespaces.
+        <br><br>
+        Dependency Injection, service locator och lazy loading är alla designmönster/tekniker för att kunna ha bättre kommunikation mellan klasserna och klienten. Jag använde Wikipedia och källorna de har använt som källor.
+        <br><br>
+        DI är ett sätt för att isolera en klass och göra det användbart vid tillfälle. Service locator är en ännu mer isolerad designmönster som är svårare att enhetstesta men tydligare att förstå. Lazy loading är ett sätt att slippa ladda upp alla onödiga funktioner när man startar/initialiserar ett program (webbsida) för att göra det mer "effektiv".
+        <br><br>
+        Laravels "Service Container" hantererar alla dependency injections med hjälp av "bindings" som verkar som ett smidigare sätt. Skillnaden skulle vara att vi har inte så många alternativ för att "injektera" våra klasser. Utand vi har endast $di klassen. Laravel har andra tjänster för olika situationer och jag skulle vilja lära mig lite mer om dem genom några exempelprogram.
+        <br><br>
+        Klassen jag skapade heter "Requester" och har endast en funktion "curlJson". Man anger en url som parameter, curlar den och returnerar en JSON från en extern tjänst. Det var mest för att få en känsla för $di. Annars har jag kodat som i tidigare kmom.
+        <br><br>
+        Att jobba med externa tjänster kan vara kul eller frusterande beroende på dokumentationen. Ibland måste man skapa ett konto, läsa lite om dokumentionen et voila. Men ibland går det inte så lätt. Jag hade lite problem att förstå dokumentationen för OpenStreetMap och bestämde mig att använda Google Maps i stället (som jag är bekant med).
+        <br><br>
+        Min TIL är tänka om koden jag skriver går att nå via enhetstesterna. Det finns många sätt att skriva en funktion, så nu ser jag till att det går att testa innan jag fortsätter med den andra funktionen. Därför får jag nu 100% kodtäckning utan beskymmer.
       </div>
     </div>
   </div>

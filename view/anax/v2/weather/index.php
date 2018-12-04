@@ -4,7 +4,11 @@
     <?php if (isset($_GET["ip"])) : ?>
     <table class="table table-striped">
         <?php if ($currentIp !== null) : ?>
+        <h1><?= $weatherNow['timezone'] ?></h1>
+
         <div id="map" class="map"></div>
+
+        <h3>Current Weather</h3>
 
         <thead class="thead-light">
             <tr>
@@ -14,25 +18,38 @@
         </thead>
         <tbody>
 
-                <tr>
-                  <th scope="row">Timezone</th>
-                  <td><?= $weather['timezone'] ?></td>
-                </tr>
+            <tr>
+              <th scope="row">Summary</th>
+              <td><?= $weatherNow['currently']['summary'] ?></td>
+            </tr>
 
-                <tr>
-                  <th scope="row">Currently</th>
-                  <td><?= $weather['currently']['summary'] ?></td>
-                </tr>
+            <tr>
+              <th scope="row">Temperature (Fahrenheit)</th>
+              <td><?= $weatherNow['currently']['temperature'] ?></td>
+            </tr>
+        </tbody>
+    </table>
 
-                <tr>
-                  <th scope="row">Hourly</th>
-                  <td><?= $weather['hourly']['summary'] ?></td>
-                </tr>
+    <h3>30 days ago</h3>
 
-                <tr>
-                  <th scope="row">Daily</th>
-                  <td><?= $weather['daily']['summary'] ?></td>
-                </tr>
+    <table  class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+              <th scope="row">Summary</th>
+              <td><?= $weatherBefore['currently']['summary'] ?></td>
+            </tr>
+
+            <tr>
+              <th scope="row">Temperature (Fahrenheit)</th>
+              <td><?= $weatherBefore['currently']['temperature'] ?></td>
+            </tr>
 
         </tbody>
     </table>
@@ -66,6 +83,9 @@
     <?php endif; ?>
     <?php if (!isset($_GET["ip"])) : ?>
         <form class="form-signin" method="get" action="">
+            <div class="alert alert-primary" role="alert">
+              Get current weather and previous weather (30 days ago)
+            </div>
 
             <div class="form-group">
                     <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" required>

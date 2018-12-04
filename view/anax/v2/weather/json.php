@@ -8,12 +8,13 @@
         <pre>
             <?php
                 $json = array(
-                    "latitude" => $weather['latitude'],
-                    "longitude" => $weather['longitude'],
-                    "timezone" => $weather['timezone'],
-                    "currently" => $weather['currently']['summary'],
-                    "daily" => $weather['daily']['summary'],
-                    "hourly" => $weather['hourly']['summary']
+                    "latitude" => $weatherNow['latitude'],
+                    "longitude" => $weatherNow['longitude'],
+                    "timezone" => $weatherNow['timezone'],
+                    "current" => $weatherNow['currently']['summary'],
+                    "currentTemp" => $weatherNow['currently']['temperature'],
+                    "previous" => $weatherBefore['currently']['summary'],
+                    "previousTemp" => $weatherBefore['currently']['temperature'],
                 );
 
 
@@ -32,6 +33,10 @@
     <?php endif; ?>
     <?php if (!isset($_GET["ip"])) : ?>
         <form class="form-signin" method="get">
+            <div class="alert alert-primary" role="alert">
+              Get current weather and previous weather (30 days ago)
+            </div>
+            
             <div class="form-group">
                 <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" required>
             </div>

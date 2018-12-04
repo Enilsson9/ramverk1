@@ -48,14 +48,22 @@ class WeatherIpJsonController extends WeatherIpController implements ContainerIn
         $accessKey  = '49a95e2b98f16776978bbf2d3097c542';
         $details = $this->requester->curlJson('http://api.ipstack.com/'.$currentIp.'?access_key='.$accessKey);
 
+        $unixMonth = strval(time() - (30 * 24 * 60 * 60));
+
+
         $accessKey  = '6ff1debe5cff84d291f5345bd079fd90';
-        $weather = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude']);
+
+        $weatherBefore = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude'].','.$unixMonth);
+        $weatherNow = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude']);
+
         $json = null;
 
 
         $data['json'] = $json;
-        $data['weather'] = $weather;
+        $data["weatherNow"] = $weatherNow;
+        $data["weatherBefore"] = $weatherBefore;
         $data['currentIp'] = $currentIp;
+        $data['unixMonth'] = $unixMonth;
 
         $page->add("anax/v2/weather/json", $data);
 

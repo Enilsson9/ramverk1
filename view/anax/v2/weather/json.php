@@ -8,13 +8,13 @@
         <pre>
             <?php
                 $json = array(
-                    "latitude" => $weatherNow['latitude'],
-                    "longitude" => $weatherNow['longitude'],
-                    "timezone" => $weatherNow['timezone'],
-                    "current" => $weatherNow['currently']['summary'],
-                    "currentTemp" => $weatherNow['currently']['temperature'],
-                    "previous" => $weatherBefore['currently']['summary'],
-                    "previousTemp" => $weatherBefore['currently']['temperature'],
+                    "ip" => $currentIp,
+                    "timezone" => $weather['timezone'],
+                    "date" => $chosenDate,
+                    "latitude" => $weather['latitude'],
+                    "longitude" => $weather['longitude'],
+                    "summary" => $weather['currently']['summary'],
+                    "temperature" => $weather['currently']['temperature']
                 );
 
 
@@ -32,24 +32,28 @@
         <a href="api"><button class="btn btn-primary btn-lg">Go back</button></a>
     <?php endif; ?>
     <?php if (!isset($_GET["ip"])) : ?>
+        <div class="alert alert-warning" role="alert">
+            <h4> API instructions </h4>
+
+            <p>GET request. Provide valid IP address and valid date format YYYY-mm-dd</p>
+
+            <samp>?ip=8.8.8.8&date=2018-12-07</samp>
+        </div>
+        
         <form class="form-signin" method="get">
             <div class="alert alert-primary" role="alert">
-              Get current weather and previous weather (30 days ago)
+              Get current weather, future weather (up to 7 days) or previous weather (up to 30 days ago).
             </div>
-            
+
             <div class="form-group">
-                <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" required>
+                <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" placeholder="Your IP address here" required>
+                <input class ="form-control" type="date" name="date" value="<?= $today?>" min="<?= $oneMonthAgo ?>" max="<?= $oneWeekLater ?>" required>
             </div>
             <button class="btn btn-primary btn-lg btn-block"  type="submit">Get JSON</button>
         </form>
 
-        <h4> Test routes </h4>
 
-        <p>My place</p>
-        <p><a href="?ip=186.151.62.176">api?ip=186.151.62.176</a></p>
-        <p>Facebook</p>
-        <p><a href="?ip=2a03:2880:2110:df07:face:b00c::1">api?ip=2a03:2880:2110:df07:face:b00c::1</a></p>
-        <p>Random</p>
-        <p><a href="?ip=4.2.2.2">api?ip=4.2.2.2</a></p>
+
+
     <?php endif; ?>
 </div>

@@ -28,6 +28,7 @@ class WeatherIpController implements ContainerInjectableInterface
      * @var string $db a sample member variable that gets initialised
      */
     private $ipAddress;
+    private $date;
     private $object;
     private $requester;
 
@@ -46,6 +47,12 @@ class WeatherIpController implements ContainerInjectableInterface
         $this->requester = $this->di->get("requester");
 
         $this->ipAddress = $request->getGet("ip");
+        $this->date = $request->getGet("date");
+
+        $today = gmdate("Y-m-d", time() - (1 * 24 * 60 * 60));
+        $oneMonthAgo = gmdate("Y-m-d", time() - (30 * 24 * 60 * 60));
+        $oneWeekLater = gmdate("Y-m-d", time() + (7 * 24 * 60 * 60));
+
         $currentIp = $this->ipAddress;
         $this->object = new WeatherIp();
 
@@ -55,18 +62,23 @@ class WeatherIpController implements ContainerInjectableInterface
         $details = $this->requester->curlJson('http://api.ipstack.com/'.$currentIp.'?access_key='.$accessKey);
 
         $accessKey  = '6ff1debe5cff84d291f5345bd079fd90';
+        $unixDate = strtotime($this->date);
+        #get weather
+        $weather = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude'].','.$unixDate.'?exclude=minutely,hourly,daily,flags');
 
-        $unixMonth = strval(time() - (30 * 24 * 60 * 60));
 
-        //weather 30 days ago
-        $weatherBefore = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude'].','.$unixMonth);
-        //current weather
-        $weatherNow = $this->requester->curlJson('https://api.darksky.net/forecast/'.$accessKey .'/'.$details['latitude'].','.$details['longitude']);
+        if ($this->date < $oneMonthAgo || $this->date > $oneWeekLater) {
+            $weather = null;
+        }
 
         $data["details"] = $details;
-        $data["weatherNow"] = $weatherNow;
-        $data["weatherBefore"] = $weatherBefore;
+        $data["weather"] = $weather;
         $data["currentIp"] = $currentIp;
+
+        $data["today"] = $today;
+        $data["oneMonthAgo"] = $oneMonthAgo;
+        $data["oneWeekLater"] = $oneWeekLater;
+        $data["chosenDate"] = $this->date;
 
         $page->add("anax/v2/weather/index", $data);
 

@@ -2,63 +2,39 @@
 
 <div class="jumbotron">
     <?php if (isset($_GET["ip"])) : ?>
-    <table class="table table-striped">
-        <?php if ($currentIp !== null) : ?>
-        <h1><?= $weatherNow['timezone'] ?></h1>
+        <table class="table table-striped">
+            <?php if ($currentIp !== null) : ?>
+            <h1><?= $weather['timezone'] ?></h1>
 
-        <div id="map" class="map"></div>
+            <div id="map" class="map"></div>
 
-        <h3>Current Weather</h3>
+            <h3>Weather from <?= $chosenDate ?> </h3>
 
-        <thead class="thead-light">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Details</th>
-            </tr>
-        </thead>
-        <tbody>
+            <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            <tr>
-              <th scope="row">Summary</th>
-              <td><?= $weatherNow['currently']['summary'] ?></td>
-            </tr>
+                <tr>
+                  <th scope="row">Summary</th>
+                  <td><?= $weather['currently']['summary'] ?></td>
+                </tr>
 
-            <tr>
-              <th scope="row">Temperature (Fahrenheit)</th>
-              <td><?= $weatherNow['currently']['temperature'] ?></td>
-            </tr>
-        </tbody>
-    </table>
+                <tr>
+                  <th scope="row">Temperature (Fahrenheit)</th>
+                  <td><?= $weather['currently']['temperature'] ?></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h3>30 days ago</h3>
-
-    <table  class="table table-striped">
-        <thead class="thead-light">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Details</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            <tr>
-              <th scope="row">Summary</th>
-              <td><?= $weatherBefore['currently']['summary'] ?></td>
-            </tr>
-
-            <tr>
-              <th scope="row">Temperature (Fahrenheit)</th>
-              <td><?= $weatherBefore['currently']['temperature'] ?></td>
-            </tr>
-
-        </tbody>
-    </table>
-
-        <?php elseif ($currentIp === null) : ?>
-            <div class="alert alert-danger" role="alert">
-              Your IP address is not valid
-            </div>
-        <?php endif; ?>
+            <?php elseif ($currentIp === null) : ?>
+                <div class="alert alert-danger" role="alert">
+                     Your IP address is not valid
+                </div>
+            <?php endif; ?>
 
         <a href="weather"><button class="btn btn-primary btn-lg btn-block">Go back</button></a>
 
@@ -84,24 +60,17 @@
     <?php if (!isset($_GET["ip"])) : ?>
         <form class="form-signin" method="get" action="">
             <div class="alert alert-primary" role="alert">
-              Get current weather and previous weather (30 days ago)
+              Get current weather, future weather (up to 7 days) or previous weather (up to 30 days ago).
             </div>
 
             <div class="form-group">
-                    <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" required>
+                    <input class="form-control"  type="text" name="ip" value="<?= $currentIp ?>" placeholder="Your IP address here" required>
+
+                    <input class ="form-control" type="date" name="date" value="<?= $today?>" min="<?= $oneMonthAgo ?>" max="<?= $oneWeekLater ?>" required>
+
             </div>
             <button class="btn btn-primary btn-lg btn-block"  type="submit">Check weather</button>
         </form>
-
-        <h4> Test routes </h4>
-
-        <p>My place</p>
-        <p><a href="?ip=186.151.62.176">weather?ip=186.151.62.176</a></p>
-        <p>Facebook</p>
-        <p><a href="?ip=2a03:2880:2110:df07:face:b00c::1">weather?ip=2a03:2880:2110:df07:face:b00c::1</a></p>
-        <p>Random</p>
-        <p><a href="?ip=4.2.2.2">weather?ip=4.2.2.2</a></p>
-
 
     <?php endif; ?>
 </div>

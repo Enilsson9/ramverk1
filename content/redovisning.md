@@ -93,7 +93,20 @@
     </div>
     <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
       <div class="card-body">
-        My report here
+        Att lyfta ut koden var lite svårare än jag trodde. Det var många andra filer jag glömde att placera. Däremot, jag tog reda på vilka som saknades genom att köra "make test" rätt så ofta. Det var mest några Anax filer som jag glömde att lägga till i config.
+        <br><br>
+        När jag publicerade på Packagist fick jag ett fel, mitt vendor namn hade redan använts. Problemet var att jag glömde ändra Anax som vendor till mitt eget på filen composer.json. Därefter gick det smidigt att publicera och använda.
+        <br><br>
+        Att installera modulen gick inte så smidigt i början, jag fick ändra min scafffold/bash fil ett par gånger innan den syncade filerna korrekt. Det går att följa mina instruktioner nu. Det är ju i princip bara att köra composer require och köra bash filen i scaffold.
+        <br><br>
+        Jag fick runt 70% kodtäckning på mina enhetstester. Tidigare hade jag 100% men eftersom jag fick ändra modulen för att använda multi_curl, då hittade jag inget sätt att enhetstesta den funktionen som ligger i $di tjänsten. Den funktionen är inte min egen kod, därför blir det svårt för mig att förstå exakt vad funktionen gör för att anropa API:et så många gånger.
+        <br><br>
+        Moduler underlättar för att integrera ens kod i en större sammanhang. Det blir tydligare med vem som skapat vad, och det kan vara enklare att felsöka eftersom man vet vilken modul är det som
+        strular. Å andra sidan blir det många mappar att ha koll på, utan en modul kan upplevas enklare att navigera bland mappar och filer.
+        <br><br>
+        Jag undersökte Laravel. De använder också composer, men de har flera alternativ för att skapa ett paket beroende på om man vill att modulen ska kunna anpassa sig i flera ramverk eller just Laravel. De har även en CLI som heter Artisan. För versionshantering använder de tokens och timestamps. Jag läste bara översiktligt, svårt att endast läsa dokumentationen något exempel.
+        <br><br>
+        Min TIL är att bash är ett bra verktyg när det gäller installationen av en modul. Det underlättar för att lägga till filerna i rätt mapp utan att skriva över de som redan finns. Jag känner fortfarande lite magiskt med Anax CLI men förstår tanken bakom det, att installera Anax för att testa modulen.
       </div>
     </div>
   </div>

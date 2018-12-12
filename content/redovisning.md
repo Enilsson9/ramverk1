@@ -66,7 +66,7 @@
       </h5>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
+      <div class="card-body text-left">
         Det känns lite udda att jobba med $di. Det blir mycket man måste konfigurera för att lägga till nya klasser i Containern. Det gick inte heller för mig att nå $di utanför mina Controller klasser. Däremot, om man lägger till flera klasser kan koden bli mycket smidigare och lättare att nå utan koll på alla namespaces.
         <br><br>
         Dependency Injection, service locator och lazy loading är alla designmönster/tekniker för att kunna ha bättre kommunikation mellan klasserna och klienten. Jag använde Wikipedia och källorna de har använt som källor.
@@ -92,7 +92,7 @@
       </h5>
     </div>
     <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-      <div class="card-body">
+      <div class="card-body text-left">
         Att lyfta ut koden var lite svårare än jag trodde. Det var många andra filer jag glömde att placera. Däremot, jag tog reda på vilka som saknades genom att köra "make test" rätt så ofta. Det var mest några Anax filer som jag glömde att lägga till i config.
         <br><br>
         När jag publicerade på Packagist fick jag ett fel, mitt vendor namn hade redan använts. Problemet var att jag glömde ändra Anax som vendor till mitt eget på filen composer.json. Därefter gick det smidigt att publicera och använda.
@@ -119,8 +119,21 @@
       </h5>
     </div>
     <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-      <div class="card-body">
-        My report here
+      <div class="card-body text-left">
+      
+        Jag valde att integrera alla verktyg som fanns med i artikeln. Förutom codeclimate test coverage, eftersom det skulle vara samma coverage som scrutiziner. Det gick okej att integrera dem. Jag fick några felmeddelande som fixades genom att redigera composer.json. Jag hade alltid modulen remserver som referens.
+        <br><br>
+        Jag uppskattade scrutinizer mest, p.g.a man får tre badges på en gång  (build, betyg och coverage). Och det är lätt att uppdatera med en "refresh" knapp. Dessutom tyckte jag att det var trevligt med en gitter badge.
+        <br><br>
+        Jag fick 9.65 kodkvalitet. Jag kunde ha fått 10 men in i $di tjänsten har jag en multi_curl funktionen som inte är min, jag ska skapa en egen multi_curl om jag hinner. Men man för nöja sig med betyget ibland.?
+        <br><br>
+        Jag delade upp Controller klassen lite till för att kunna enhetstesta lite bättre. Men i princip är nästan bara funktionen i $di som jag bör fixa för att få högre coverage.
+        <br><br>
+        Jag undersökte Laravel som vanligt och det verkar som att deras tester heter "Dusk tests" . Tjänster de nämner på dokumentationen är TravisCI, Heroku CI, Codeship, CircleCI.  Heroku och Codeship liknar Scrutinizer enligt deras exempel.
+        <br><br>
+        Modulerna som finns på Anax har bra betyg. Vissa av dom har även 10 som betyg och 100% coverage. Jag tycker att man ska inte nå alltid betyg 10 eller perfekt coverage. P.g.a det kan bli mycket jobb bara för att få lite högre jobb. Om tid/ork/lust finns, då kan det vara smart att höja betyget. Annars kan man lämna det till nästa tillfälle.
+        Min TIL är att börja koppla ett git repo direkt på CI tjänster. Då blir det lätt att få högre betyg och coverage i längden.
+
       </div>
     </div>
   </div>
@@ -133,7 +146,7 @@
       </h5>
     </div>
     <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-      <div class="card-body">
+      <div class="card-body text-left">
         My report here
       </div>
     </div>

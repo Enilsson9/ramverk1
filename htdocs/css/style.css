@@ -24,11 +24,11 @@ img.thumb {
 }
 
 footer {
-    max-width: 100%;
-    min-height: 10em;
-    background-color: #424242;
-    color: #fff;
-    padding: 1em 0;
+    max-width: 100% !important;
+    min-height: 10em !important;
+    background-color: #424242 !important;
+    color: #fff !important;
+    padding: 1em 0 !important;
 }
 
 main {

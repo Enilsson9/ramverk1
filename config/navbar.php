@@ -17,5 +17,10 @@ return [
         "text" => "Redovisning",
         "url" => "redovisning",
         "title" => "Redovisningstexter från kursmomenten.",
-    ]
+    ],
+    [
+        "text" => "Book",
+        "url" => "book",
+        "title" => "Book system with CRUD.",
+    ],
 ];

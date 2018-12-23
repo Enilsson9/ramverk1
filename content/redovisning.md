@@ -120,7 +120,7 @@
     </div>
     <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
       <div class="card-body text-left">
-      
+
         Jag valde att integrera alla verktyg som fanns med i artikeln. Förutom codeclimate test coverage, eftersom det skulle vara samma coverage som scrutiziner. Det gick okej att integrera dem. Jag fick några felmeddelande som fixades genom att redigera composer.json. Jag hade alltid modulen remserver som referens.
         <br><br>
         Jag uppskattade scrutinizer mest, p.g.a man får tre badges på en gång  (build, betyg och coverage). Och det är lätt att uppdatera med en "refresh" knapp. Dessutom tyckte jag att det var trevligt med en gitter badge.
@@ -147,7 +147,21 @@
     </div>
     <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
       <div class="card-body text-left">
-        My report here
+        Modulen anax/htmlform är ett smidigt sätt för att implementera formulärhantering och CRUD. Mikael nämnde i streamen att CRUD kan upplevas som repetitivt och tråkigt. Den här modulen sparar massor med tid. Däremot, om man använder Bootstrap som jag, blir man tvungen att ändra lite på de originella vyerna.
+        <br><br>
+        Jag hittade några lösningar på Laravel (php artisan make:request StoreBlogPost) och Symfony (symfony/validator och /form). Anax är typ en blandning av dem. Man delar upp formulärhanteringen på själva HTML, valideringen och renderingen i Controllern.
+        <br><br>
+        Fördelen med Active record är att det blir mycket mer läsbart och går att spara informationen i variabler, vilket gör det återanvändbar. Däremot, det kan bli lite strul när man indexerar stora tabeller eller försöker visa en vy på andra sätt. Active record kan alltså begränsa vad man kan göra med en relationsdatabas jämfört med rå SQL kod.
+        <br><br>
+        Andra ramverk har många sätt att integrera ActiveRecord. Man kan välja att skriva rå SQL-kod, vanlig ActiveRecord eller en blandning av dem. Det beror alltså på tillfället. Att koppla databasen på andra ramverk är nästan exakt samma som på Anax.
+        <br><br>
+        Scaffolding hjälper enormt när det gäller att placera filerna där de behövs. Särskilt kombinationen med bash och rsync gör det väldigt smidigt för att kunna integrera moduler i ens kod. Å andra sidan, om det blir för många filer/kataloger, kan man vara svårt att ha koll på vilken fil/mapp beror på vilken. Det blir svårt att felsöka då om man inte placerat själv filerna.
+        <br><br>
+        Andra ramverk använder mest scaffolding på CSS och JavaScript kod med hjälp av npm. Det är ju för att snabba upp ens workflow. Men många föredrar nog mest att styra deras egna filer genom ett pakethanterare.
+        <br><br>
+        Om man ska jobba med en extern modul bör den vara enhetstestat tidigare. Man ska ju inte enhetstesta en kod som någon annan har skrivit. Det man kan göra är enhetstesterna för nya klasser och controllers man skapat med modulen.
+        <br><br>
+        Min TIL är att ActiveRecord är ett smidigt sätt för att kunna snabba upp de tråkiga aspekter av programmering på ett ramverk. Även om man scaffoldar på några sekunder kan det kan bli svårt att felsöka ibland (som brukar ta lång tid).
       </div>
     </div>
   </div>

@@ -175,7 +175,19 @@
     </div>
     <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
       <div class="card-body">
-          My report here
+        Krav 1,2,3:
+        <br><br>
+        Webbsidan skyddas av inloggning genom att ändra routerns handler, beroende på om sessionen är aktiv eller inte. Man omdirigeras till inloggning sidan om man försöker t.ex nå Forumet. Man kan skapa en ny användare om man inte har inloggningsuppgifterna. En gravatar skapas per automatik beroende på mailadressen man angivit. Funktionen för att göra det fick jag från den oficiella gravatar webbsidan → http://en.gravatar.com/site/implement/images/php/.
+        <br><br>
+        När man loggar in, kan man då navigera som vanligt. På navbaren finns home, about, profile och forum som alternativ. På profil sidan (/profile) kan man se sina egna uppgifter samt uppdatera dem. På första sidan (/) finns det ett välkomstmeddelande samt de senaste frågorna, mest aktiva användare och de populäraste taggarna. För att få informationen använde jag ActiveRecord och SQLite vyer. Jag valde att inte krångla med PHP och hade en SQL vy för förstasidan. Samma sak gäller för forumet och alla andra routes. Jag skapade alltså en SQLite vy för varje route.
+        <br><br>
+        För att kunna ställa frågor, svara, kommentera osv har jag använt modulen HTMLform. Jag tyckte att det var ett smidigt sätt att få Active Record och validering. Alla taggar och användarna finns som länkar på varje vy. Man kan se alla användare via ”forum/users”, alla taggar via ”forum/tags” och ställa en fråga via ”forum/ask”. För att kommentera eller svara gör man det direkt på frågan. Man kommer åt en fråga via forum/question/ID. Allt skrivs i Markdown med hjälp av min Filter klass.
+        <br><br>
+        Det jobbigast med projektet var SQL tabellerna. Jag fick joina hur många tabeller som helst och det blev rätt så många Active Record klasser då. Jag fick också köra en bash fil rätt så mycket för att kunna  återställa mina vyer. Jag gissar att man kan nog hantera det mesta med Anax, men jag valde att träna lite på SQLite vyer och det gick bra till slut. Nästa gång ska jag hitta en smidigare lösning.
+        <br><br>
+        Kursen var lite udda jämfört med de andra dbwebb-kurserna. Kursmomenterna handlade om väldigt mycket teori och bara lite om ramverket. Jag fick kämpa rätt så hårt med projektet, eftersom jag löste mina kmom på det ”enklaste” sättet, men projektet var alltså en riktig utmaning för mig. Jag är nöjd med kursen, men jag skulle vilja lära mig alla verktyg från ramverket innan projektet. Det var kanske mitt fel att inte läsa /verktyg delen från Anax. Men jag fick lära mig det ändå.
+
+        Jag ger kursen en 7 som betyg.
       </div>
     </div>
   </div>
